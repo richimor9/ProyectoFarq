@@ -62,12 +62,12 @@ class DBConnect
 			return false;
 		}
 	
-	while($row = $result->fetch_assoc())
-	{
+		while($row = $result->fetch_assoc())
+		{
 		$rows[] = $row;
-	}
+		}
 	return $rows;
-}
+	}
 
 public function error()
  {

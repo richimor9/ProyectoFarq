@@ -1,8 +1,7 @@
 <?php
-
 class Activos
 {
-	private $conn;
+	public $conn;
 	private $table_name = "activos";
 
 	public $id;
@@ -18,9 +17,15 @@ class Activos
 
 	function getAll()
 	{
-		//$query = "SELECT * FROM" . $this->table_name . " WHERE status = 1 ORDERS BY nombre";
-		$query = "SELECT * FROM activos";
+		$query = "SELECT * FROM " . $this->table_name . " WHERE id>0";
+		//$query = "SELECT * FROM activos WHERE id > 0 ";
 		return ($this->conn->select($query)) ? ($this->conn->select($query)) : false;
+	}
+	function getByID($id)
+	{
+		$query = "SELECT * FROM " . $this->table_name . " WHERE id =" . $id;
+		return($this->conn->select($query)) ? ($this->conn->select($query)) : false;
+ 
 	}
 
 

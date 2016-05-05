@@ -1,50 +1,27 @@
+<div class="activos">
 <?php
 
-include_once "DBConnect.php";
-include_once "Activos.php";
-//header('Content-Type: text/html: charset=utf-8');
+include_once "../php/backend/DBConnect.php";
+include_once "../php/backend/Activos.php";
+
+
 
 $db = new DBConnect();
-
-/*$action = isset(_POST["action"]) ? $_POST["action"] : "";
-
-switch($action) 
-{
-	case "new":
-		$header = "Nuevo activo":
-		break;
-	case "edit":
-		$header = "Editar activo":
-		break;
-	default:
-		die("Page Not found");
-		break;
-}  */
-?> 
-<?php
-include_once "Activos.php";
 $acts = new Activos($db);
 
-$acts ->getAll() /*or die("<h3>No hay activos en la base de datos</h3>")*/;
-print_r($acts);
-?>
-<div class="activos">
-	<select id = "id" name= "activos">
-		<?php
-			if($rows = $acts->getAll())
-			{
-				foreach($rows as $val)
-				{
-					echo "<option value = '" . htmlentities(mb_convert_encoding($val["id"] . "UTF-8")) . "'>" .
-						htmlentities(mb_convert_encoding($val["nombre"] . "UTF-8")) . "</option>";
+$id = 1;
 
-				}
+if($rows = $acts->getAll() )
+{
+	foreach($rows as $value) 
+	{
+		echo "Ok <br> <br>";
+		echo htmlentities(mb_convert_encoding($value['id'],"UTF-8"));
+		echo "<br><br>";
+		echo htmlentities(mb_convert_encoding($value['nombre'], "UTF-8"));
 
-			}
-			else 
-			{
-				die("error");
-			} 
-		?>
-	</select>
+	}
+
+}
+?> 
 </div>
