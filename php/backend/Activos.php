@@ -5,14 +5,32 @@ class Activos
 	private $table_name = "activos";
 
 	public $id;
-	public $nombre;
+	public $numserie;
+	public $activo;
+	public $usuario;
+	public $departamento;
+	public $tecnico;
+	public $producto;
+	public $estado;
+	public $descripcion;
+
 
 	public function __construct($db) 
 	{
 		$this->conn = $db;
 	}
-	function create() 
+	function create($numserie, $activo, $usuario, $departamento, $tecnico, $producto, $estado, $descripcion, $id) 
 	{
+	$query = "INSERT INTO activos(numserie, activo, usuario, departamento, tecnico, producto, estado, descripcion, status) VALUES ('" .$numserie . "' , " . $activo . " ,  '". $usuario . "' , '". $departamento . "' , '". $tecnico . "' , '". $producto . "' , '". $estado . "' , '". $descripcion . "' , " . $id . ")";
+		/*if($this->conn->insert($query)) {
+			$var = "hola";
+		}
+		else {
+			$var = false;
+		}*/
+		//return ($this->conn->insert($query)) ? ($this->conn->insert($query)) : false;
+		return ($this->conn->insert($query)) ? "nojalo" : "ok";
+
 	}
 
 	function getAll()

@@ -69,6 +69,22 @@ class DBConnect
 	return $rows;
 	}
 
+	public function insert($query)
+	{
+		$rows = array();
+		$result = $this->query($query);
+		if($result == false)
+		{
+			return false;
+		}
+		else {
+			return $rows;
+		}
+
+	}
+
+
+
 public function error()
  {
  	$connection = $this->connect();
