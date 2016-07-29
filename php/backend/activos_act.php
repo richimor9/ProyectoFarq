@@ -31,10 +31,10 @@ th, td{padding:5px;}
 			echo "<script>";
 			echo 'alert("Numero de serie esta vacio"); window.location.href="../../templates/activos.php"';
 			echo "</script>";
-		} 
-
-
+			} 
 	}
+	/////
+	
 
 		 	function getalluser()
 		 	{
@@ -57,10 +57,16 @@ th, td{padding:5px;}
 		 				echo "<th><a href='detalles.php?id=".htmlentities(mb_convert_encoding($val['id'],"UTF-8"))."'>".htmlentities(mb_convert_encoding($val['id'], "UTF-8"))."</a></th>";
 		 				echo "<th>".htmlentities(mb_convert_encoding($val ['usuario'],"UTF-8"))."</th>";
 			 			echo "<th>".htmlentities(mb_convert_encoding($val['numserie'], "UTF-8"))."</th>";
-			 			echo "<th><input type='submit' name='eliminate' value='eliminate' onclick='eliminate'/></th>";
+			 			$id = $val['id'];
+			 			//echo "<th><input type='submit' name='eliminate' value='eliminate' onclick='confirmation($id);'/></th>";
+			 			echo "<th><a id='$id' href='../php/backend/borraRegistro.php?id=$id'>Eliminar registro </a> </th>";
+			 			//echo "<th><a onclick='confirmation($id)' href='#'>Eliminar registro </a> </th>";
+
 			 			echo "<tr>";
 			 		}
 			 			echo "</table>";
+
+
 			 		}
 			 		else
 			 		{
@@ -68,13 +74,19 @@ th, td{padding:5px;}
 			 		}
  		
  	}
-
+ 	
  	function eliminate($id)
  	{
  		$db = new DBConnect();
  		$acts = new Activos($db);
+ 		$test = $acts->geteliminate($id);
+ 		geteliminate($id);
 
- 	}
+
+ 	}	
+
+
+
 
  	function getuserbyid($id)
  	{

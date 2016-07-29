@@ -46,6 +46,18 @@ class Activos
  
 	}
 
+	function geteliminate($id)
+ 	{
+ 		$db = new DBConnect();
+ 		$acts = new Activos($db);
+ 		
+ 		$query = "DELETE FROM " . $this->table_name . " WHERE id =" . $id;
+ 		return($this->conn->query($query)) ? ($this->conn->query($query)) : false; 
+ 			
+ 	
+
+ 	}
+
 
 }
 ?>
